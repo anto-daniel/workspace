@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+
+import argparse
+import requests
+import json
+
+
+def list_repositories():
+    url = "http://localhost:5000/v2/_catalog"
+    res = requests.get(url)
+    str1 = json.loads(res.content)
+    print("Here is the repo list:")
+    print("----------------------")
+    for repo in str1["repositories"]:
+        print(repo)
+    print("----------------------")
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-l", "--list", action="store_true", 
+                        help="List repository")
+    args = parser.parse_args()
+    if args.list:
+        list_repositories()
+    else:
+        print("print -h for options")
+
+
+if __name__ == "__main__":
+    main()
+

@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import yaml
+import json
+import sys
+
+filename = sys.argv[1]
+basename = filename.split(".")[0]
+jsonfilename = basename+".json"
+
+#print(filename)
+#print(basename)
+#print(jsonfilename)
+
+with open(filename, 'r') as yaml_in, open(jsonfilename, "w") as json_out:
+    yaml_object = yaml.safe_load(yaml_in)
+    json.dump(yaml_object, json_out)
+
+with open(jsonfilename, 'r') as f:
+    lines = [line for line in f]
+
+for line in lines:
+    print(line)
