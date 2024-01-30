@@ -31,11 +31,11 @@ func main() {
 	// parse json result into map
 	var mymap map[string]int
 	json.Unmarshal(body, &mymap)
-  fmt.Println("Print Type")
-  fmt.Println("================")
-  fmt.Println(reflect.TypeOf(mymap))
-  fmt.Println("================")
-  for _, ele := range mymap {
-    fmt.Println(ele)
-  }
+	fmt.Println("Print Type")
+	fmt.Println("================")
+	fmt.Println(reflect.TypeOf(mymap))
+	fmt.Println("================")
+	for _, ele := range mymap {
+		fmt.Println(ele)
+	}
 }
