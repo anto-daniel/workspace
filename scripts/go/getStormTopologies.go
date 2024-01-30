@@ -12,7 +12,7 @@ func main() {
 	// read api json result from uri
 	// parse json result into map
 	// print map
-  uri := "http://127.0.0.1:5000/home/5/6"
+	uri := "http://127.0.0.1:5000/home/5/6"
 
 	resp, err := http.Get(uri)
 	if err != nil {
