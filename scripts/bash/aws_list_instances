@@ -1,0 +1,4 @@
+#!/bin/bash
+echo -ne "\nCluster Name: "
+read cluster
+aws ec2 describe-instances --filters Name=tag:cluster_name,Values=$cluster --region=us-west-2 | jq -r ".Reservations[].Instances[].PrivateIpAddress"
