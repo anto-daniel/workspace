@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 # Creating an instance of Flask
 app = Flask(__name__)
 
-
+# create a route for the API
 @app.route('/add', methods=['GET', 'POST'])
 def home():
     if request.method == 'GET':
