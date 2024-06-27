@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """ This Script helps in creating InMobi JIRA ticket """
+""" Author: Anto Daniel """
 
 from jira.client import JIRA
 import argparse
