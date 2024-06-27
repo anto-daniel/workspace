@@ -9,7 +9,10 @@ if [ -z $cluster_name ]; then
   exit 1
 fi
 
-pname='522156507493_Legacy-AdministratorAccess'
+echo -e "Profile Name:\n"
+read pname
+
+# example: pname='522156507493_Legacy-AdministratorAccess'
 aws ec2 describe-instances --filters "Name=tag:cluster_name, Values=$cluster_name" --profile $pname > cluster_details.json
 
 #cat cluster_details.json | jq '.Reservations[].Instances[] | {InstanceId: .InstanceId, InstanceType: .InstanceType, PublicIpAddress: .PublicIpAddress, PrivateIpAddress: .PrivateIpAddress, State: .State.Name, KeyName: .KeyName, SecurityGroups: .SecurityGroups[].GroupName, Volumes: .BlockDeviceMappings[].Ebs.VolumeId, Tags: .Tags[].Value}' > cluster_details.txt
