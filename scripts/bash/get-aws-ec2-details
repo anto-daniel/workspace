@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+#vol-04b889f00a6f63a7d
+
+cluster_name=$1
+
+if [ -z $cluster_name ]; then
+  echo "Please provide volume id"
+  exit 1
+fi
+
+pname='522156507493_Legacy-AdministratorAccess'
+aws ec2 describe-instances --filters "Name=tag:cluster_name, Values=$cluster_name" --profile $pname > cluster_details.json
+
+#cat cluster_details.json | jq '.Reservations[].Instances[] | {InstanceId: .InstanceId, InstanceType: .InstanceType, PublicIpAddress: .PublicIpAddress, PrivateIpAddress: .PrivateIpAddress, State: .State.Name, KeyName: .KeyName, SecurityGroups: .SecurityGroups[].GroupName, Volumes: .BlockDeviceMappings[].Ebs.VolumeId, Tags: .Tags[].Value}' > cluster_details.txt
+
+#cat cluster_details.txt
+
+cat cluster_details.json| jq -r '.Reservations[].Instances[].InstanceId' > instanceids.txt
+cat cluster_details.json| jq -r '.Reservations[].Instances[].InstanceType' > instancetype.txt
+cat cluster_details.json| jq -r '.Reservations[].Instances[].PrivateIpAddress' > ips.txt
+cat cluster_details.json| jq -r '.Reservations[].Instances[].BlockDeviceMappings[-1].Ebs.VolumeId' > volid.txt
+cat cluster_details.json| jq -r '.Reservations[].Instances[].Tags[] | select(.Key|contains("job")) | .Value' > jobs.txt
+paste instanceids.txt instancetype.txt ips.txt volid.txt jobs.txt > cluster_details.txt
+cat cluster_details.txt | sort -k5 > cluster_dets.txt
+cat cluster_dets.txt
+rm cluster_details.json instanceids.txt instancetype.txt ips.txt volid.txt jobs.txt cluster_details.txt cluster_dets.txt

@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+#vol-04b889f00a6f63a7d
+
+instance_id=$1
+pname='522156507493_Legacy-AdministratorAccess'
+
+if [ -z $instance_id ]; then
+  echo "Please provide instance id"
+  exit 1
+fi
+if [[ $AWS_REGION == "us-west-2" ]]; then
+	aws ec2 describe-instances --filter "Name=instance-id,Values=$instance_id" \
+    --query 'Reservations[*].Instances[*].[PrivateIpAddress]' \
+#    --query 'Reservations[*].Instances[*].BlockDeviceMappings[*].Ebs.VolumeId' \
+    --output text > cluster_details.json
+else
+	aws ec2 describe-instances --filters "Name=instance-id, Values=$instance_id" --profile $pname > cluster_details.json
+fi
+
+cat cluster_details.json

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dd if=/dev/random of=filename count=10 bs=1063256064

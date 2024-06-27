@@ -1,0 +1,11 @@
+#!/bin/bash
+# Usage: ./aws_get_bucket_acl.sh <bucket_name>
+# Description: This script is used to get the ACL of a bucket
+# Author: Anto Daniel
+
+if [ $# -ne 1 ]; then
+  echo "Usage: ./aws_get_bucket_acl.sh <bucket_name>"
+  exit 1
+fi
+bucket=$1
+aws s3api get-bucket-acl --bucket $bucket

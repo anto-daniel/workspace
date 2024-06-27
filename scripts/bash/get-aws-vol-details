@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+#vol-04b889f00a6f63a7d
+
+vol_id=$1
+
+if [ -z $vol_id ]; then
+  echo "Please provide volume id"
+  exit 1
+fi
+
+aws ec2 describe-volumes --volume-ids ${vol_id}
