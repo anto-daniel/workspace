@@ -1,9 +1,9 @@
 #!/bin/bash
-#
-#vol-04b889f00a6f63a7d
 
 instance_id=$1
-pname='522156507493_Legacy-AdministratorAccess'
+echo -e "Profile Name:\n"
+read pname
+# example: pname='personal'
 
 if [ -z $instance_id ]; then
   echo "Please provide instance id"

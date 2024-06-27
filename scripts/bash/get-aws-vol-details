@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-#vol-04b889f00a6f63a7d
 
 vol_id=$1
 
