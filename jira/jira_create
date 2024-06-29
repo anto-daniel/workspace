@@ -39,17 +39,17 @@ class CreateJIRA:
     def create_jira(self, args):
         """ With previous method details, creats jira ticket """
 
-        issue = self.jira.create_issue(project={'key': ""+args.project+""},
-                                       summary=""+args.summary+"",
-#                                       origin=""+args.origin+"",
-                                       description=""+args.description+"",
-                                       customfield_13631={'value': 'PaaS Data Services'},
-                                       #assignee={'name': 'anto.paul',
-                                       #          'emailAddress':
-                                       #          'anto.paul@smarsh.com'},
-                                       issuetype={'name': ""+args.type+""},
-                                       #components=[{'name': ""+args.component+""},],
-                                       )
+        issue = self.jira.create_issue(project={'key': ""+args.project+""}, 
+                summary=""+args.summary+"",
+                #origin=""+args.origin+"",
+                description=""+args.description+"",
+                customfield_13631={'value': 'PaaS Data Services'},
+                #assignee={'name': 'anto.paul',
+                #          'emailAddress':
+                #          'anto.paul@smarsh.com'},
+                issuetype={'name': ""+args.type+""},
+                #components=[{'name': ""+args.component+""},],
+            )
         log.info('JIRA Ticket ID: %s created' % issue)
 #        os.system("xdg-open https://jira.corp.domain.com/browse/"+issue.__str__())
 
