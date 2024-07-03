@@ -19,7 +19,8 @@ ec2 = boto3.resource('ec2', region_name='us-east-1',
 def get_instances():
     instances = ec2.instances.all()
     for instance in instances:
-        print(instance.id, instance.state, instance.tags)
+        print(instance.id, instance.state, 
+                instance.public_ip_address)
 
 
 if __name__ == '__main__':
