@@ -3,3 +3,4 @@ envs
 aws/terraform/create-aws-instance/.terraform/*
 aws/terraform/create-aws-instance/.terraform.lock.hcl
 aws/terraform/create-aws-instance/terraform.tfstate
+aws/terraform/create-aws-instance/terraform.tfstate.backup
