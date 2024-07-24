@@ -20,7 +20,12 @@ def disp(num1, num2):
         data = num1 + num2
         return jsonify({'data': data})
 
+@app.route('/multiply/<int:num1>/<int:num2>', methods=['GET'])
+def multiply(num1, num2):
+    if request.method == 'GET':
+        data = num1 * num2
+        return jsonify({'data': data})
+
 
 if  __name__ == '__main__':
     app.run(debug=True)
-

@@ -9,10 +9,20 @@ import (
 )
 
 func main() {
+	// read input from user
+	sysout := "Enter the number of rows and columns: "
+	fmt.Println(sysout)
+	var rows, cols int
+	fmt.Scan(&rows)
+	fmt.Scan(&cols)
+	fmt.Println("Rows: ", rows)
+	fmt.Println("Cols: ", cols)
+
 	// read api json result from uri
 	// parse json result into map
 	// print map
-	uri := "http://127.0.0.1:5000/home/5/6"
+	// use rows and cols in uri at the end of the uri
+	uri := "http://127.0.0.1:5000/home/" + fmt.Sprint(rows) + "/" + fmt.Sprint(cols)
 
 	resp, err := http.Get(uri)
 	if err != nil {
