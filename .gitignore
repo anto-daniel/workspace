@@ -7,3 +7,5 @@ aws/terraform/create-aws-instance/terraform.tfstate
 aws/terraform/create-aws-instance/terraform.tfstate.backup
 aws/terraform/terraform-aws/.terraform/*
 aws/terraform/terraform-aws/.terraform.lock.hcl
+aws/ali/*
+aws/ali
