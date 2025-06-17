@@ -9,3 +9,4 @@ aws/terraform/terraform-aws/.terraform/*
 aws/terraform/terraform-aws/.terraform.lock.hcl
 aws/ali/*
 aws/ali
+.venv
