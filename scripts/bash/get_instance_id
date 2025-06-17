@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## Get the first argument as IP address
+ip=$1
+if [[ $ip == "" ]]; then
+  echo "Please provide an IP address in the first argument"
+  exit 1
+fi
+
+aws ec2 describe-instances --filters "Name=private-ip-address,Values=$ip" \
+	--query "Reservations[].Instances[].InstanceId" --output text \
+	--profile $AWS_PROFILE --region $AWS_REGION

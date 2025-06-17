@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Generate a if condition where First and second arguments should have values and those should be filename
+
+# diffAB file1 file2
+if [ -z "$1" ] || [ -z "$2" ]; then
+	echo "Usage: $0 <file1> <file2>"
+	exit 1
+fi
+if [ ! -f "$1" ] || [ ! -f "$2" ]; then
+	echo "Both arguments must be files"
+	exit 1
+fi
+
+grep -Fxv -f $2 $1 > c.txt
+echo Generated a file called c.txt where you can find the difference

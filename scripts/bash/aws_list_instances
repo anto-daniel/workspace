@@ -1,4 +1,14 @@
 #!/bin/bash
-echo -ne "\nCluster Name: "
-read cluster
-aws ec2 describe-instances --filters Name=tag:cluster_name,Values=$cluster --region=us-west-2 | jq -r ".Reservations[].Instances[].PrivateIpAddress"
+
+## Please specify AWS_REGION and AWS_PROFILE
+if [[ "$AWS_REGION" == "" ]]; then
+	echo "Please specify AWS_REGION"
+	exit 1
+fi
+
+if [[ "$AWS_PROFILE" == "" ]]; then
+	echo "Please specify AWS_PROFILE"
+	exit 1
+fi
+
+aws ec2 describe-instances --region $AWS_REGION --query 'Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,Tags[?Key==`Name`].Value|[0],PrivateIpAddress,PublicIpAddress]' --output table --profile $AWS_PROFILE

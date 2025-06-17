@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Prompts for confirmation before rebooting EC2 instance
+read -p "Reboot EC2 instance? [y/N] " -n 1 -r
+echo
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	aws ec2 reboot-instances --instance-ids $1 --profile $AWS_PROFILE \
+		--region $AWS_REGION
+fi

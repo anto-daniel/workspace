@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# aws cli command to start the instance using instance id
+
+aws ec2 start-instances --instance-ids $1 --profile $AWS_PROFILE

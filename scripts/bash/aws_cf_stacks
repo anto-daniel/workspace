@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+
+if [ ! -z $AWS_PROFILE ]; then
+  aws cloudformation list-stacks --profile $AWS_PROFILE | jq -r '.StackSummaries[] | .StackName+", \t\t\t"+.StackStatus '
+else
+  aws cloudformation list-stacks | jq -r '.StackSummaries[] | .StackName+", \t\t\t"+.StackStatus '
+fi
+
+

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $1 == "" ]]; then
+  echo "Need 1st argument. Mention number of seconds.."
+  echo "$0 <seconds>"
+  echo "example: $0 12"
+  exit 1
+fi
+
+sec=$1
+
+for i in `seq 1 $sec` ;do
+  echo -ne "..$i\r" 
+  sleep 1
+done
