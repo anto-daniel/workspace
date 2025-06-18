@@ -10,3 +10,4 @@ aws/terraform/terraform-aws/.terraform.lock.hcl
 aws/ali/*
 aws/ali
 .venv
+scripts/bash/work/*
