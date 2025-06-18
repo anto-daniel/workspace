@@ -14,7 +14,7 @@ pushd work
 openssl genrsa -out ca.key 2048
 openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -subj "/C=IN/ST=KAR/L=BLR/O=ARRM/OU=SRE/CN=$HOSTNAME"
 openssl genrsa -out server.key 2048
-openssl req -new -key server.key -out server.csr -subj "/C=US/ST=CAL/L=CAL/O=CloudBolt/OU=SRE/CN=$HOSTNAME"
+openssl req -new -key server.key -out server.csr -subj "/C=IN/ST=KAR/L=BLR/O=ARRM/OU=SRE/CN=$HOSTNAME"
 cat > server.ext <<EOF
 authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
