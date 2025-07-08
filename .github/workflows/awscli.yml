@@ -1,4 +1,4 @@
-name: Install AWS Cli
+name: Install AWS Cli v2
 
 on:
   push:
