@@ -19,4 +19,6 @@ jobs:
           installrootdir: "/usr/local"
           rootdir: ""
           workdir: ""
+        run: |
+          aws --version
 
