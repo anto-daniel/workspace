@@ -1,0 +1,10 @@
+#!/bin/bash
+
+grep -E --color 'vmx|svm' /proc/cpuinfo >> /dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+  echo "Virtualization is enabled.."
+else
+  echo "Virtialization is NOT enabled.."
+fi
+
