@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -euo pipefail
+
+vault_path="$1"
+
+if [ -z "$vault_path" ]; then
+	echo "Usage: $0 <vault_path>"
+	exit 1
+fi
+
+vault kv get -field value "$vault_path"

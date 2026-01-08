@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+vpath=$1  ## vault path
+
+if [ -z "$vpath" ]; then
+	echo "usage: vdel <path>"
+	exit 1
+fi
+
+# vault command to kv delete the path and its metadata
+vault kv delete $vpath
+
+# vault command to delete the metadata
+vault kv metadata delete $vpath

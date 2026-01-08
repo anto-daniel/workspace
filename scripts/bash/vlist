@@ -1,0 +1,10 @@
+#!/bin/bash
+
+vpath="$1"
+
+if [ "$vpath" = "" ]; then
+	echo "Usage: $0 <path>"
+	exit 1
+fi
+
+vault kv list "$vpath"

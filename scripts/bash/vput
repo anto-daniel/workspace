@@ -1,0 +1,23 @@
+#!/bin/bash
+
+path=$1
+value=$2
+
+if [[ -z "$path" ]]; then
+	echo "Usage: vput <path> <value>"
+	exit 1
+fi
+
+if [[ -z "$value" ]]; then
+	echo "Usage: vput <path> <value>"
+	exit 1
+fi
+
+vault kv put $path value=$value
+if [[ $? -ne 0 ]]; then
+	echo "Failed to set $path to $value"
+	exit 1
+else
+	echo "Set $path to $value"
+fi
+
